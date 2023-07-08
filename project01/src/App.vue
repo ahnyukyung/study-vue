@@ -21,40 +21,42 @@
       <h4 :style="red">{{ product }} 원룸</h4>
       <p>{{ prices[i] }}만원</p>
     </div>-->
-
-    <div class="item_box">
-      <img src="./assets/logo.png" alt="" />
-      <h4 @click="open">{{ products[0] }} 원룸</h4>
-      <p>20만원</p>
-      <div class="btn_wrap">
+    <!-- <span v-for="i in 10" :key="{ i }">{i}</span> -->
+    <section v-for="(oneroom, idx) in onerooms" :key="{ idx }" class="item_box">
+      <img :src="oneroom.image" alt="" />
+      <h4>{{ oneroom.title }} 원룸</h4>
+      <article>{{ oneroom.content }} 원룸</article>
+      <p>{{ oneroom.price }}만원</p>
+      <button @click="open">자세히보기</button>
+      <!-- <div class="btn_wrap">
         <button @click="신고수[0]++">허위매물신고</button>
         <span>신고수 : {{ 신고수[0] }}</span>
-      </div>
-    </div>
+      </div> -->
+    </section>
 
-    <div class="item_box">
+    <!-- <section class="item_box">
       <h4>{{ products[1] }} 원룸</h4>
       <p>30만원</p>
       <div class="btn_wrap">
         <button @click="increase">허위매물신고</button>
         <span>신고수 : {{ 신고수[1] }}</span>
       </div>
-    </div>
+    </section> -->
 
-    <div class="item_box">
-      <h4>{{ products[2] }} 원룸</h4>
+    <!-- <section class="item_box">
+      <h4>{{ products[1]  }} 원룸</h4>
       <p>40만원</p>
       <div class="btn_wrap">
         <button @click="increase">허위매물신고</button>
         <span>신고수 : {{ 신고수[2] }}</span>
       </div>
-    </div>
+    </section> -->
   </main>
 </template>
 
 <script>
 // import HelloWorld from "./components/HelloWorld.vue";
-import onerooms from "./oneroom.js";
+import onerooms from "./assets/oneroom";
 
 export default {
   name: "App",
@@ -62,11 +64,9 @@ export default {
     return {
       menus: ["Home", "Products", "About"],
       red: "color : red",
-      products: ["염창동", "천호동", "마포구"],
-      prices: [10, 20, 30],
       신고수: [0, 0, 0],
       모달창: false,
-      원룸들: onerooms,
+      onerooms: onerooms,
     };
   },
   methods: {
@@ -106,8 +106,7 @@ export default {
   top: 0;
   right: 0;
 }
-#header {
-}
+
 #header .menu {
   display: flex;
   justify-content: center;
@@ -122,5 +121,12 @@ export default {
 #header .menu a {
   text-decoration: none;
   color: #fff;
+}
+section {
+  margin-bottom: 20px;
+}
+.item_box img {
+  width: 100%;
+  max-width: 800px;
 }
 </style>
