@@ -1,6 +1,6 @@
 <template>
-  <div class="modal_wrap" v-if="모달창 === true">
-    <button class="btn_close" @click="모달창 = false">닫기</button>
+  <div class="modal_wrap" v-if="modal === true">
+    <button class="btn_close" @click="modal = false">닫기</button>
     <div class="modal">
       <h4>상세 페이지</h4>
       <p>내용</p>
@@ -65,7 +65,7 @@ export default {
       menus: ["Home", "Products", "About"],
       red: "color : red",
       신고수: [0, 0, 0],
-      모달창: false,
+      modal: false,
       onerooms: onerooms,
     };
   },
@@ -74,7 +74,7 @@ export default {
       this.신고수++;
     },
     open() {
-      this.모달창 = true;
+      this.modal = true;
     },
   },
   components: {
@@ -92,7 +92,7 @@ export default {
   color: #2c3e50;
 }
 .modal_wrap {
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50px;
   width: 80%;
